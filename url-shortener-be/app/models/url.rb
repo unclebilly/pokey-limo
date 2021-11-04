@@ -1,8 +1,10 @@
 class Url < ApplicationRecord
-  validates :url, url: true, presence: true, uniqueness: true
-  validates :slug, presence: true, uniqueness: true
+  validates :url, url: true, presence: true, uniqueness: true, length: {in: 10..2048}
+  validates_uniqueness_of :slug, case_sensitive: true
+  validates :slug, length: { in: 8..255 }
 
-  before_create :generate_unique_slug
+  before_validation :generate_unique_slug, on: :create
+
 
   private
 
