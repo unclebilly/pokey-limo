@@ -3,7 +3,7 @@ module Api
 
     def create
       @url = Url.create!(url_params)
-      render json: @url, status: :created
+      render partial: @url, status: :created
     end
 
     private
