@@ -6,17 +6,20 @@
 # compile code, build container images, initialize a database,
 # anything else that needs to happen before your server is started
 # for the first time
-setup:
-	which docker || { echo "ERROR: missing docker"; exit 1; }
-	which docker-compose || { echo "ERROR: missing docker-compose"; exit 1; }
+setup: depends
 	docker-compose build
 
 # `make server` will be used after `make setup` in order to start
 # an http server process that listens on any unreserved port
 #	of your choice (e.g. 8080). 
-server:
+server: depends
 	docker-compose up
 # `make test` will be used after `make setup` in order to run
 # your test suite.
-test:
+test: depends
+	docker-compose run url-shortener-be bundle exec rake db:test:prepare
 	docker-compose run url-shortener-be bundle exec rspec
+
+depends:
+	which docker || { echo "ERROR: missing docker"; exit 1; }
+	which docker-compose || { echo "ERROR: missing docker-compose"; exit 1; }
