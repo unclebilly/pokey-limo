@@ -1,0 +1,12 @@
+# Docker user and group ids
+# On linux these should match your ids
+USER_ID=1000
+GROUP_ID=998
+
+# config for backend
+SECRET_TOKEN=b901f497b233abb5f63b6ad3d7c23b951785bf4798a634a922902ba3d0410d37
+RAILS_MAX_THREADS=1
+LISTEN=0.0.0.0:3000
+DATABASE_URL=postgresql://url-shortener-be:test_db_password@postgres:5432/url-shortener-be?encoding=utf8&pool=5&timeout=5000
+CACHE_URL=redis://redis:6379/0
+JOB_WORKER_URL=redis://redis:6379/0

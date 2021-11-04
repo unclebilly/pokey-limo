@@ -1,0 +1,5 @@
+.git
+.dockerignore
+.env
+url-shortener-be/node_modules/
+url-shortener-be/vendor/bundle/
