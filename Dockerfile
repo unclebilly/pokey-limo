@@ -16,7 +16,7 @@ RUN mkdir -p $INSTALL_PATH
 WORKDIR $INSTALL_PATH
 COPY url-shortener-be/ .
 RUN rm -rf node_modules vendor
-RUN gem install rails bundler
+RUN gem install bundler
 RUN bundle install
 RUN yarn install
 RUN chown -R user:user /opt/app
@@ -27,4 +27,4 @@ RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 
 USER $USER_ID
-CMD bundle exec rails server
+CMD bundle exec rails db:create; bundle exec rails db:migrate; bundle exec rails server
