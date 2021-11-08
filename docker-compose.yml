@@ -42,6 +42,19 @@ services:
       - redis
     env_file:
       - .env
+  frontend:
+    image: "node:16-alpine"
+    user: "node"
+    working_dir: /opt/app/frontend
+    volumes:
+      - ./frontend:/opt/app/frontend
+    command: "yarn start"
+    depends_on:
+      - url-shortener-be
+    ports:
+      - '8080:3000'
+    env_file:
+      - .env
 volumes:
   url-shortener-be-postgres:
   url-shortener-be-redis:

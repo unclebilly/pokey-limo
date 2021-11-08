@@ -19,6 +19,7 @@ server: depends
 test: depends
 	docker-compose run url-shortener-be bundle exec rake db:test:prepare
 	docker-compose run url-shortener-be bundle exec rspec
+	docker-compose run frontend yarn test --watchAll=false
 
 depends:
 	which docker || { echo "ERROR: missing docker"; exit 1; }
