@@ -1,13 +1,13 @@
-import { screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import UrlInput from './UrlInput';
-import { shallow, mount, render} from "enzyme";
 
 test('renders the component successfully', () => {
   const placeholder = "Foo text";
-  const wrapper = render(<UrlInput placeholder={placeholder} />);
+  render(<UrlInput placeholder={placeholder} />);
   // expect(wrapper.state("isInvalid")).toEqual(false);
 
-  expect(wrapper.find("input")).toHaveTextContent(placeholder);
+  const input = screen.getByPlaceholderText(placeholder);
+  expect(input).toBeTruthy();
 });
 
 test('calls onSubmit handler', () => {
@@ -15,7 +15,15 @@ test('calls onSubmit handler', () => {
   const onSubmit = () => {
     called = true;
   }
-  const wrapper = mount(<UrlInput onSubmit={onSubmit} />);
-  wrapper.find("button").simulate('click');
+  const result = render(<UrlInput onSubmit={onSubmit} />);
+  fireEvent.click(screen.getByRole('button'));
   expect(called).toBe(true);
+});
+
+test('validates URL', () => {
+  render(<UrlInput />);
+  fireEvent.change(screen.getByRole('textbox'), {
+    target: { value: "htt" },
+  });
+  expect(screen.getByRole('textbox')).toHaveClass('is-invalid');
 });
