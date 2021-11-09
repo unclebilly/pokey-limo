@@ -2,6 +2,7 @@
 
 development: 
   url: <%= ENV['DATABASE_URL'].gsub('?', '_development?') %>
+  pool: 5
 
 test: 
   url: <%= ENV['DATABASE_URL'].gsub('?', 'test?') %>
