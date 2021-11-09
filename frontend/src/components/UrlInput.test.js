@@ -24,6 +24,16 @@ test('calls onSubmit handler on click', () => {
 
 test('validates URL', () => {
   render(<UrlInput />);
-  userEvent.type(screen.getByRole('textbox'), "htt");
-  expect(screen.getByRole('textbox')).toHaveClass('is-invalid');
+  const textbox = screen.getByRole('textbox');
+
+  userEvent.type(textbox, "htt");
+  expect(textbox).toHaveClass('is-invalid');
+
+  userEvent.clear(textbox);
+  userEvent.type(textbox, "https://www.google.com");
+  expect(textbox).not.toHaveClass('is-invalid');
+
+  userEvent.clear(textbox);
+  userEvent.type(textbox, "https://www.google.com/search?q=url+shortener&oq=google+u&aqs=chrome.0.69i59j69i60l3j0j69i57.1069j0j7&sourceid=chrome&ie=UTF-8");
+  expect(textbox).not.toHaveClass('is-invalid');
 });
