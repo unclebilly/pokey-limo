@@ -1,4 +1,5 @@
 import { render, screen, fireEvent } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import UrlInput from './UrlInput';
 
 test('renders the component successfully', () => {
@@ -10,20 +11,19 @@ test('renders the component successfully', () => {
   expect(input).toBeTruthy();
 });
 
-test('calls onSubmit handler', () => {
+test('calls onSubmit handler on click', () => {
   let called = false;
   const onSubmit = () => {
     called = true;
   }
-  const result = render(<UrlInput onSubmit={onSubmit} />);
-  fireEvent.click(screen.getByRole('button'));
+  render(<UrlInput onSubmit={onSubmit} />);
+  userEvent.type(screen.getByRole('textbox'), "https://www.google.com");
+  userEvent.click(screen.getByRole('button'));
   expect(called).toBe(true);
 });
 
 test('validates URL', () => {
   render(<UrlInput />);
-  fireEvent.change(screen.getByRole('textbox'), {
-    target: { value: "htt" },
-  });
+  userEvent.type(screen.getByRole('textbox'), "htt");
   expect(screen.getByRole('textbox')).toHaveClass('is-invalid');
 });
