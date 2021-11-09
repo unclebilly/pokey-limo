@@ -2,7 +2,7 @@ module Api
   class UrlsController < ApplicationController
 
     def create
-      @url = Url.create!(url_params)
+      @url = Url.find_or_create_by!(url: url_params[:url])
       render partial: @url, status: :created
     end
 
