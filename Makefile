@@ -23,6 +23,10 @@ test: depends
 	docker-compose run backend bundle exec rspec
 	docker-compose run frontend yarn test --watchAll=false
 
+audit: depends
+	docker-compose run backend bundle exec bundle-audit
+	docker-compose run frontend yarn audit --level critical
+
 depends:
 	which docker || { echo "ERROR: missing docker"; exit 1; }
 	which docker-compose || { echo "ERROR: missing docker-compose"; exit 1; }
