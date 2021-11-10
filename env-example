@@ -1,11 +1,24 @@
-# Docker user and group ids
-# On linux these should match your ids
-USER_ID=1000
-GROUP_ID=998
+###
+# It is optional to change these
+###
 
-# config for backend
+##
+# Ports
+# You may need to change these if you already have services running on them.
+# I tried to pick non-standard port numbers.
+#
+REDIS_PORT=6380
+RAILS_PORT=3001
+REACT_PORT=8081
+PG_PORT=5433
+
+##
+# Rails backend config
+# You probably won't need to change these
+#
 SECRET_TOKEN=b901f497b233abb5f63b6ad3d7c23b951785bf4798a634a922902ba3d0410d37
-RAILS_MAX_THREADS=1
+RAILS_MAX_THREADS=5
+# this is the ip/port as the app sees it in its own container, not on your host machine.
 LISTEN=0.0.0.0:3000
 DATABASE_URL=postgresql://url-shortener-be:test_db_password@postgres:5432/url-shortener-be?encoding=utf8&pool=5&timeout=5000
 CACHE_URL=redis://redis:6379/0

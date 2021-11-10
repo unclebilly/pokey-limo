@@ -24,7 +24,7 @@ export default class ShortenedUrl extends React.Component {
       headers: headers,
       body: JSON.stringify({"url": {"url": this.props.urlToShorten}}),
     }
-    const request = new Request('http://localhost:3000/api/urls');
+    const request = new Request('http://localhost:3001/api/urls');
     try {
       const rawResult = await fetch(request, options);
       if(!rawResult.ok) {
@@ -52,7 +52,7 @@ export default class ShortenedUrl extends React.Component {
         {this.state.errorMessage ? (
           <Alert variant="danger">{this.state.errorMessage}</Alert>
         ) : (
-          <a href={this.state.shortUrl}>{this.state.shortUrl}</a>
+          <a href={this.state.shortUrl} target="_blank">{this.state.shortUrl}</a>
         )}
         <Button variant="secondary" className="ms-auto" onClick={this.handleCopyClicked}>{this.state.copyButtonText}</Button>
         <Button variant="primary" onClick={this.handleAnotherClicked}>Shorten Another URL</Button>

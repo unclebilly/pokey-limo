@@ -8,12 +8,14 @@
 # for the first time
 setup: depends
 	docker-compose build
+	docker-compose run frontend yarn install
 
 # `make server` will be used after `make setup` in order to start
 # an http server process that listens on any unreserved port
 #	of your choice (e.g. 8080). 
 server: depends
 	docker-compose up
+
 # `make test` will be used after `make setup` in order to run
 # your test suite.
 test: depends

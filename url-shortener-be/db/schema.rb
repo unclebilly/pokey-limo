@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2021_11_04_035611) do
   enable_extension "plpgsql"
 
   create_table "urls", force: :cascade do |t|
-    t.string "url", null: false
+    t.string "url", limit: 2048, null: false
     t.string "slug", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
