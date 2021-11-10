@@ -1,5 +1,5 @@
 .git
 .dockerignore
 .env
-url-shortener-be/node_modules/
-url-shortener-be/vendor/bundle/
+backend/node_modules/
+backend/vendor/bundle/

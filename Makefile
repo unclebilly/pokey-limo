@@ -19,8 +19,8 @@ server: depends
 # `make test` will be used after `make setup` in order to run
 # your test suite.
 test: depends
-	docker-compose run url-shortener-be bundle exec rake db:test:prepare
-	docker-compose run url-shortener-be bundle exec rspec
+	docker-compose run backend bundle exec rake db:test:prepare
+	docker-compose run backend bundle exec rspec
 	docker-compose run frontend yarn test --watchAll=false
 
 depends:

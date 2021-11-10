@@ -47,7 +47,7 @@ Copy env-example to .env - the values should work without modification, but if y
 
 ## Running just the rails tests: 
 
-    docker-compose run url-shortener-backend bundle exec rspec
+    docker-compose run backend bundle exec rspec
 
 ## Running just the frontend tests: 
 

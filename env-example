@@ -20,6 +20,6 @@ SECRET_TOKEN=b901f497b233abb5f63b6ad3d7c23b951785bf4798a634a922902ba3d0410d37
 RAILS_MAX_THREADS=5
 # this is the ip/port as the app sees it in its own container, not on your host machine.
 LISTEN=0.0.0.0:3000
-DATABASE_URL=postgresql://url-shortener-be:test_db_password@postgres:5432/url-shortener-be?encoding=utf8&pool=5&timeout=5000
+DATABASE_URL=postgresql://backend:test_db_password@postgres:5432/backend?encoding=utf8&pool=5&timeout=5000
 CACHE_URL=redis://redis:6379/0
 JOB_WORKER_URL=redis://redis:6379/0

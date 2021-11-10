@@ -1,4 +1,4 @@
-FROM ruby:2.7.4 AS url-shortener-be-development
+FROM ruby:2.7.4 AS backend-development
 
 ARG USER_ID
 ARG GROUP_ID
@@ -14,7 +14,7 @@ ENV INSTALL_PATH /opt/app
 RUN mkdir -p $INSTALL_PATH
 
 WORKDIR $INSTALL_PATH
-COPY url-shortener-be/ .
+COPY backend/ .
 RUN rm -rf node_modules vendor
 RUN gem install bundler
 RUN bundle install
