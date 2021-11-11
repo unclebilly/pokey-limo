@@ -1,16 +1,8 @@
 ###
 # It is optional to change these
-###
-
-##
-# Ports
-# You may need to change these if you already have services running on them.
-# I tried to pick non-standard port numbers.
-#
-REDIS_PORT=6380
-RAILS_PORT=3001
-REACT_PORT=8081
-PG_PORT=5433
+# 
+APP_PORT=8082
+APP_HOST=localhost
 
 ##
 # Rails backend config
@@ -18,6 +10,7 @@ PG_PORT=5433
 #
 SECRET_TOKEN=b901f497b233abb5f63b6ad3d7c23b951785bf4798a634a922902ba3d0410d37
 RAILS_MAX_THREADS=5
+RAILS_HOST=backend
 # this is the ip/port as the app sees it in its own container, not on your host machine.
 LISTEN=0.0.0.0:3000
 DATABASE_URL=postgresql://backend:test_db_password@postgres:5432/backend?encoding=utf8&pool=5&timeout=5000

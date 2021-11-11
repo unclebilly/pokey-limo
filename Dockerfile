@@ -21,10 +21,5 @@ RUN bundle install
 RUN yarn install
 RUN chown -R user:user /opt/app
 
-# Add a script to be executed every time the container starts.
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
-ENTRYPOINT ["entrypoint.sh"]
-
 USER $USER_ID
-CMD bundle exec rails db:create; bundle exec rails db:migrate; bundle exec rails server
+CMD bundle exec rails db:create; bundle exec rails db:migrate; bundle exec puma -C config/puma.rb

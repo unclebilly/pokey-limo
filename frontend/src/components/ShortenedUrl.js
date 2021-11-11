@@ -24,7 +24,7 @@ export default class ShortenedUrl extends React.Component {
       headers: headers,
       body: JSON.stringify({"url": {"url": this.props.urlToShorten}}),
     }
-    const request = new Request('http://localhost:3001/api/urls');
+    const request = new Request('/api/urls');
     try {
       const rawResult = await fetch(request, options);
       if(!rawResult.ok) {

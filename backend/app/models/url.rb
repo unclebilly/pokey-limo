@@ -17,10 +17,12 @@ class Url < ApplicationRecord
   end
 
   ##
+  # Confusingly, this returns a size of 8 (even though we pass in 6 - 
+  # because the string is 4/3 the size of n according to the docs.)
   # URL-safe base64 is 62 ascii characters.  With 8 characters in a slug
   # that's 218,340,105,584,896 possibilities.
   #
   def generate_slug
-    SecureRandom.urlsafe_base64(8)
+    SecureRandom.urlsafe_base64(6)
   end
 end
