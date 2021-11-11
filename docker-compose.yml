@@ -19,6 +19,8 @@ services:
         GROUP_ID: "${GROUP_ID:-1000}"
     volumes:
       - ./backend:/opt/app
+    depends_on: 
+      - postgres
     env_file:
       - .env
   frontend:

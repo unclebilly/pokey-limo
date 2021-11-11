@@ -13,7 +13,7 @@ RSpec.describe "Urls", type: :request do
     expect(response).to have_http_status(:created)
     expect(json_url["url"]).to eq("https://example.com")
     expect(json_url["slug"]).to be
-    expect(json_url["shortened_url"]).to eq("http://localhost:3000/#{json_url['slug']}")
+    expect(json_url["shortened_url"]).to eq("http://#{ENV['APP_HOST']}:#{ENV['APP_PORT']}/#{json_url['slug']}")
   end
 
   it "handles validation errors" do

@@ -27,6 +27,5 @@ module UrlShortenerBe
     config.cache_store = :redis_cache_store, {
       url: ENV['CACHE_URL'],
       namespace: 'url-shortener::cache' }
-    config.active_job.queue_adapter = :sidekiq 
   end
 end
