@@ -52,7 +52,7 @@ export default class ShortenedUrl extends React.Component {
         {this.state.errorMessage ? (
           <Alert variant="danger">{this.state.errorMessage}</Alert>
         ) : (
-          <a href={this.state.shortUrl} target="_blank" rel="noreferrer">{this.state.shortUrl}</a>
+          <a href={this.state.shortUrl} target="_blank" rel="noreferrer" className="shortened-url">{this.state.shortUrl}</a>
         )}
         <Button variant="secondary" className="ms-auto" onClick={this.handleCopyClicked}>{this.state.copyButtonText}</Button>
         <Button variant="primary" onClick={this.handleAnotherClicked}>Shorten Another URL</Button>

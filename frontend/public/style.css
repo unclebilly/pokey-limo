@@ -1,0 +1,52 @@
+h1 {
+  font-family: 'Montserrat', sans-serif;
+  src: url('https://fonts.googleapis.com/css?family=Montserrat');
+  font-weight: bold;
+}
+p {
+  font-family: 'Open Sans', sans-serif;
+  src: url('https://fonts.googleapis.com/css?family=Open+Sans');
+  text-align: justify;
+}
+
+.blue-bg {
+  position: fixed;
+  background: center/80% url(pokeylimo.png);
+  background-size: cover;
+  background-color: #58aff6;
+  top: 0;
+  height: 400px;
+  width: 100vw;
+  z-index: -1;
+  overflow-x: hidden;
+}
+
+.white-bg {
+  position: absolute;
+  top: 0;
+  background-color: #fff;
+  min-height: 500px;
+  margin: 210px 0px;
+  width: 100vw;
+  height: 100vh;
+  transform: skewY(5deg);
+  z-index: -1;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  margin: 250px 10vw;
+  background-color: transparent;
+}
+
+.shadow {
+  box-shadow: -2px -5px 5px 0px rgba(0,0,0,0.3);
+}
+
+#root .form-control, #root .btn { 
+    line-height: 3;
+}
+.shortened-url { 
+    font-size: 2em;
+}
